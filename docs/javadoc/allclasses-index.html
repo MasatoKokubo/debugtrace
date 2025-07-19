@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="script-dir/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="script-dir/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="script-dir/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="all-classes-index-page">
@@ -55,24 +55,30 @@ loadScripts(document, 'script');</script>
 </div>
 <div id="all-classes-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab1" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab1', 2)" class="table-tab">Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button></div>
-<div id="all-classes-table.tabpanel" role="tabpanel">
-<div class="summary-table two-column-summary" aria-labelledby="all-classes-table-tab0">
+<div id="all-classes-table.tabpanel" role="tabpanel" aria-labelledby="all-classes-table-tab0">
+<div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/BooleanSupplier.html" title="interface in org.debugtrace.helper">BooleanSupplier</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Supplier of a boolean value.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Contains the main static methods of DebugTrace.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/DoubleSupplier.html" title="interface in org.debugtrace.helper">DoubleSupplier</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Supplier of a double value.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org/debugtrace/logger/File.html" title="class in org.debugtrace.logger">File</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A logger that outputs directly to a file.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/IntSupplier.html" title="interface in org.debugtrace.helper">IntSupplier</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Supplier of an int value.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org/debugtrace/logger/Jdk.html" title="class in org.debugtrace.logger">Jdk</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A logger using JDK Logger.</div>
@@ -98,7 +104,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Holds options to pass to print methods.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/LongSupplier.html" title="interface in org.debugtrace.helper">LongSupplier</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Supplier of an long value.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org/debugtrace/helper/Resource.html" title="class in org.debugtrace.helper">Resource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Uses this class when gets resources.</div>
@@ -120,7 +128,9 @@ loadScripts(document, 'script');</script>
 <div class="block">A logger using System.out.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/Supplier.html" title="interface in org.debugtrace.helper">Supplier</a>&lt;<a href="org/debugtrace/helper/Supplier.html" title="type parameter in Supplier">T</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Supplier of a T value.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org/debugtrace/helper/Tuple.html" title="interface in org.debugtrace.helper">Tuple</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Tuple interface.</div>

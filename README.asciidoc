@@ -45,11 +45,11 @@ Insert the following for the debuggee and related methods.
 
 ----
 public void foo() {
-    DebugTrace.enter(); // TODO: Remove after debugging
+    DebugTrace.enter(); // TODO: Debug
     ...
-    DebugTrace.print("value", value); // TODO: Remove after debugging
+    DebugTrace.print("value", value); // TODO: Debug
     ...
-    DebugTrace.leave(); // TODO: Remove after debugging
+    DebugTrace.leave(); // TODO: Debug
 }
 ----
 
@@ -57,14 +57,14 @@ public void foo() {
 
 ----
 public void foo() {
-    try {DebugTrace.enter(); // TODO: Remove after debugging
+    try {DebugTrace.enter(); // TODO: Debug
     ...
-    DebugTrace.print("value", value); // TODO: Remove after debugging
+    DebugTrace.print("value", value); // TODO: Debug
     ...
     if (...)
         return;
     ...
-    } finally {DebugTrace.leave();} // TODO: Remove after debugging
+    } finally {DebugTrace.leave();} // TODO: Debug
 }
 ----
 
@@ -72,15 +72,15 @@ public void foo() {
 
 ----
 public void foo() throws Exception {
-    try {DebugTrace.enter(); // TODO: Remove after debugging
+    try {DebugTrace.enter(); // TODO: Debug
     ...
-    DebugTrace.print("value", value); // TODO: Remove after debugging
+    DebugTrace.print("value", value); // TODO: Debug
     ...
     if (...)
         throw new Exception();
     ...
-    } catch (Exception e) {DebugTrace.print("e", e); throw e; // TODO: Remove after debugging
-    } finally {DebugTrace.leave();} // TODO: Remove after debugging
+    } catch (Exception e) {DebugTrace.print("e", e); throw e; // TODO: Debug
+    } finally {DebugTrace.leave();} // TODO: Debug
 }
 ----
 
@@ -104,7 +104,7 @@ public class Example1 {
     }
 
     public static void main(String[] args) {
-        DebugTrace.enter(); // TODO: Remove after debugging
+        DebugTrace.enter(); // TODO: Debug
         try {
             if (args.length <= 0)
                 throw new IllegalArgumentException("args.length = " + args.length);
@@ -112,27 +112,27 @@ public class Example1 {
             long fibonacci = fibonacci(n);
             System.out.println("fibonacci(" + n + ") = " + fibonacci);
         } catch (Exception e) {
-            DebugTrace.print("e", e); // TODO: Remove after debugging
+            DebugTrace.print("e", e); // TODO: Debug
         }
-        DebugTrace.leave(); // TODO: Remove after debugging
+        DebugTrace.leave(); // TODO: Debug
     }
 
     public static long fibonacci(long n) {
-        DebugTrace.enter(); // TODO: Remove after debugging
+        DebugTrace.enter(); // TODO: Debug
         if (n < 0)
             throw new IllegalArgumentException("n (" + n + ") is negative.");
         long fibonacci = 0;
         if (fibonacciMap.containsKey(n)) {
             fibonacci = fibonacciMap.get(n);
-            DebugTrace.print("mapped fibonacci(" + n + ")", fibonacci); // TODO: Remove after debugging
+            DebugTrace.print("mapped fibonacci(" + n + ")", fibonacci); // TODO: Debug
         } else {
             fibonacci = fibonacci(n - 2) + fibonacci(n - 1);
-            DebugTrace.print("fibonacci(" + n + ")", fibonacci); // TODO: Remove after debugging
+            DebugTrace.print("fibonacci(" + n + ")", fibonacci); // TODO: Debug
             if (fibonacci < 0)
                 throw new RuntimeException("Overflow occurred in fibonacci(" + n + ") calculation.");
             fibonacciMap.put(n, fibonacci);
         }
-        DebugTrace.leave(); // TODO: Remove after debugging
+        DebugTrace.leave(); // TODO: Debug
         return fibonacci;
     }
 }
@@ -141,32 +141,37 @@ public class Example1 {
 .debugtrace.log
 
 ----
-2024-07-13 20:37:25.720-07:00 DebugTrace 4.1.0 on Amazon.com Inc. OpenJDK Runtime Environment 17.0.11+9-LTS
-2024-07-13 20:37:25.735-07:00   property name: DebugTrace.properties
-2024-07-13 20:37:25.747-07:00   logger: org.debugtrace.logger.File (character set: UTF-8, line separator: \n, file: Z:\logs\debugtrace.log)
-2024-07-13 20:37:25.753-07:00   time zone: America/Los_Angeles
-2024-07-13 20:37:25.765-07:00 
-2024-07-13 20:37:25.773-07:00 ______________________________ main ______________________________
-2024-07-13 20:37:25.780-07:00 
-2024-07-13 20:37:25.789-07:00 Enter example.Example1.main (Example1.java:18) <- (:0)
-2024-07-13 20:37:25.796-07:00 | Enter example.Example1.fibonacci (Example1.java:32) <- (Example1.java:23)
-2024-07-13 20:37:25.804-07:00 | | Enter example.Example1.fibonacci (Example1.java:32) <- (Example1.java:40)
-2024-07-13 20:37:25.826-07:00 | | | mapped fibonacci(1) = (long)1 (Example1.java:38)
-2024-07-13 20:37:25.836-07:00 | | Leave example.Example1.fibonacci (Example1.java:46) duration: 00:00:00.023
-2024-07-13 20:37:25.843-07:00 | | 
-2024-07-13 20:37:25.851-07:00 | | Enter example.Example1.fibonacci (Example1.java:32) <- (Example1.java:40)
-2024-07-13 20:37:25.858-07:00 | | | Enter example.Example1.fibonacci (Example1.java:32) <- (Example1.java:40)
-2024-07-13 20:37:25.865-07:00 | | | | mapped fibonacci(0) = (long)0 (Example1.java:38)
-2024-07-13 20:37:25.872-07:00 | | | Leave example.Example1.fibonacci (Example1.java:46) duration: 00:00:00.007
-2024-07-13 20:37:25.913-07:00 | | | 
-2024-07-13 20:37:25.921-07:00 | | | Enter example.Example1.fibonacci (Example1.java:32) <- (Example1.java:40)
-2024-07-13 20:37:25.928-07:00 | | | | mapped fibonacci(1) = (long)1 (Example1.java:38)
-2024-07-13 20:37:25.935-07:00 | | | Leave example.Example1.fibonacci (Example1.java:46) duration: 00:00:00.007
-2024-07-13 20:37:25.943-07:00 | | | fibonacci(2) = (long)1 (Example1.java:41)
-2024-07-13 20:37:25.951-07:00 | | Leave example.Example1.fibonacci (Example1.java:46) duration: 00:00:00.092
-2024-07-13 20:37:25.960-07:00 | | fibonacci(3) = (long)2 (Example1.java:41)
-2024-07-13 20:37:25.967-07:00 | Leave example.Example1.fibonacci (Example1.java:46) duration: 00:00:00.163
-2024-07-13 20:37:25.978-07:00 Leave example.Example1.main (Example1.java:28) duration: 00:00:00.181
+2025-07-19 02:34:06.969-07:00 DebugTrace 4.1.2 on Amazon.com Inc. OpenJDK Runtime Environment 17.0.15+6-LTS
+2025-07-19 02:34:06.979-07:00   property name: DebugTrace.properties
+2025-07-19 02:34:06.987-07:00   logger: org.debugtrace.logger.File (character set: UTF-8, line separator: \n, file: Z:\logs\debugtrace.log)
+2025-07-19 02:34:06.989-07:00   time zone: America/Los_Angeles
+2025-07-19 02:34:06.996-07:00 
+2025-07-19 02:34:07.000-07:00 ______________________________ main ______________________________
+2025-07-19 02:34:07.002-07:00 
+2025-07-19 02:34:07.004-07:00 Enter example.Example2.main (Example2.java:18) <- (:0)
+2025-07-19 02:34:07.007-07:00 | Enter example.Example2.fibonacci (Example2.java:33) <- (Example2.java:23)
+2025-07-19 02:34:07.009-07:00 | | Enter example.Example2.fibonacci (Example2.java:33) <- (Example2.java:41)
+2025-07-19 02:34:07.038-07:00 | | | mapped fibonacci(1) = (long)1 (Example2.java:39)
+2025-07-19 02:34:07.041-07:00 | | Leave example.Example2.fibonacci (Example2.java:48) duration: 00:00:00.029
+2025-07-19 02:34:07.043-07:00 | | 
+2025-07-19 02:34:07.045-07:00 | | Enter example.Example2.fibonacci (Example2.java:33) <- (Example2.java:41)
+2025-07-19 02:34:07.047-07:00 | | | Enter example.Example2.fibonacci (Example2.java:33) <- (Example2.java:41)
+2025-07-19 02:34:07.049-07:00 | | | | mapped fibonacci(0) = (long)0 (Example2.java:39)
+2025-07-19 02:34:07.051-07:00 | | | Leave example.Example2.fibonacci (Example2.java:48) duration: 00:00:00.001
+2025-07-19 02:34:07.061-07:00 | | | 
+2025-07-19 02:34:07.066-07:00 | | | Enter example.Example2.fibonacci (Example2.java:33) <- (Example2.java:41)
+2025-07-19 02:34:07.068-07:00 | | | | mapped fibonacci(1) = (long)1 (Example2.java:39)
+2025-07-19 02:34:07.070-07:00 | | | Leave example.Example2.fibonacci (Example2.java:48) duration: 00:00:00.002
+2025-07-19 02:34:07.072-07:00 | | | fibonacci(2) = (long)1 (Example2.java:42)
+2025-07-19 02:34:07.074-07:00 | | Leave example.Example2.fibonacci (Example2.java:48) duration: 00:00:00.027
+2025-07-19 02:34:07.076-07:00 | | fibonacci(3) = (long)2 (Example2.java:42)
+2025-07-19 02:34:07.083-07:00 | Leave example.Example2.fibonacci (Example2.java:48) duration: 00:00:00.074
+2025-07-19 02:34:07.088-07:00 | 
+2025-07-19 02:34:07.097-07:00 | fibonacciMap = (HashMap)[
+2025-07-19 02:34:07.104-07:00 |   (Long)0: (Long)0, (Long)1: (Long)1, (Long)2: (Long)1, (Long)3: (Long)2
+2025-07-19 02:34:07.106-07:00 | ] (Example2.java:26)
+2025-07-19 02:34:07.113-07:00 | 
+2025-07-19 02:34:07.115-07:00 Leave example.Example2.main (Example2.java:29) duration: 00:00:00.108
 ----
 
 ==== 3. Method List

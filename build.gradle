@@ -1,11 +1,8 @@
 // (C) 2015 Masato Kokubo
 plugins {
-    id 'maven-publish'
-    id 'signing'
+    id 'java-library'
+    id 'groovy'
 }
-
-apply plugin: 'java-library'
-apply plugin: 'groovy'
 
 repositories {
     mavenCentral()
@@ -20,10 +17,11 @@ dependencies {
 
     compileOnly        'org.slf4j:slf4j-api:2.0.+'
     testRuntimeOnly    'ch.qos.logback:logback-classic:1.5.+'
-    
+
     testCompileOnly    'org.junit.jupiter:junit-jupiter-api:5.10.+'
     testRuntimeOnly    'org.junit.jupiter:junit-jupiter:5.10.+'
-
+    testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
+    
     testImplementation 'org.apache.groovy:groovy:4.0.+'
     testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
 }
@@ -32,7 +30,7 @@ sourceCompatibility = 17
 targetCompatibility = 17
 group               = 'org.debugtrace'
 archivesBaseName    = 'debugtrace'
-version             = '4.1.0'
+version             = '4.1.2'
 
 sourceSets {
     main {
@@ -68,10 +66,6 @@ sourceSets {
     }
 }
 
-wrapper {
-    gradleVersion = '8.9'
-}
-
 compileJava {
     options.encoding     = 'UTF-8'
     options.deprecation  = true
@@ -84,17 +78,6 @@ compileTestJava {
     options.deprecation  = compileJava.options.deprecation
     options.debug        = compileJava.options.debug
     options.compilerArgs = compileJava.options.compilerArgs
-}
-
-task compileJava_ja(type:JavaCompile) {
-    options.encoding     = compileJava.options.encoding
-    options.deprecation  = compileJava.options.deprecation
-    options.debug        = compileJava.options.debug
-    options.compilerArgs = compileJava.options.compilerArgs
-
-    classpath      = compileJava.classpath
-    source         = files('src/main_ja/java')
-    destinationDir = file('build/classes/main_ja')
 }
 
 processResources {
@@ -157,7 +140,7 @@ task sourcesJar(type: Jar) {
         attributes 'Implementation-Title'    : project.name,
                    'Implementation-Version'  : version,
                    'Implementation-Vendor'   : 'Masato Kokubo',
-                   'Implementation-Vendor-Id': 'jp.masatokokubo'
+                   'Implementation-Vendor-Id': 'dev.kokubo'
     }
 
     into('/org', {from 'src/main/java/org'})
@@ -168,60 +151,7 @@ task javadocJar(type: Jar, dependsOn:javadoc) {
     from javadoc.destinationDir
 }
 
-artifacts {
-    archives jar
-    archives sourcesJar
-    archives javadocJar
-}
-
-
 java {
     withJavadocJar()
     withSourcesJar()
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = archivesBaseName
-            from components.java
-            pom {
-                name = 'DebugTrace-java'
-                description = 'A library that outputs trace logs when debugging Java programs. It is available on Java 8 or later.'
-                url = 'https://github.com/MasatoKokubo/DebugTrace-java'
-                licenses {
-                    license {
-                        name = 'The MIT License (MIT)'
-                        url = 'https://github.com/MasatoKokubo/DebugTrace-java/blob/master/LICENSE.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'MasatoKokubo'
-                        name = 'Masato Kokubo'
-                        email = 'masatokokubo@gmail.com'
-                    }
-                }
-                scm {
-                    connection = 'https://github.com/MasatoKokubo/DebugTrace-java.git'
-                    developerConnection = 'https://github.com/MasatoKokubo/DebugTrace-java.git'
-                    url = 'https://github.com/MasatoKokubo/DebugTrace-java'
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = 'OSSRH'
-            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
-            credentials {
-                username = "$sonatypeUsername"
-                password = "$sonatypePassword"
-            }
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.mavenJava
 }
