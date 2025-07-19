@@ -15,7 +15,7 @@ public class Example1 {
     }
 
     public static void main(String[] args) {
-        DebugTrace.enter(); // TODO: Remove after debugging
+        DebugTrace.enter(); // TODO: Debug
         try {
             if (args.length <= 0)
                 throw new IllegalArgumentException("args.length = " + args.length);
@@ -23,27 +23,27 @@ public class Example1 {
             long fibonacci = fibonacci(n);
             System.out.println("fibonacci(" + n + ") = " + fibonacci);
         } catch (Exception e) {
-            DebugTrace.print("e", e); // TODO: Remove after debugging
+            DebugTrace.print("e", e); // TODO: Debug
         }
-        DebugTrace.leave(); // TODO: Remove after debugging
+        DebugTrace.leave(); // TODO: Debug
     }
 
     public static long fibonacci(long n) {
-        DebugTrace.enter(); // TODO: Remove after debugging
+        DebugTrace.enter(); // TODO: Debug
         if (n < 0)
             throw new IllegalArgumentException("n (" + n + ") is negative.");
         long fibonacci = 0;
         if (fibonacciMap.containsKey(n)) {
             fibonacci = fibonacciMap.get(n);
-            DebugTrace.print("mapped fibonacci(" + n + ")", fibonacci); // TODO: Remove after debugging
+            DebugTrace.print("mapped fibonacci(" + n + ")", fibonacci); // TODO: Debug
         } else {
             fibonacci = fibonacci(n - 2) + fibonacci(n - 1);
-            DebugTrace.print("fibonacci(" + n + ")", fibonacci); // TODO: Remove after debugging
+            DebugTrace.print("fibonacci(" + n + ")", fibonacci); // TODO: Debug
             if (fibonacci < 0)
                 throw new RuntimeException("Overflow occurred in fibonacci(" + n + ") calculation.");
             fibonacciMap.put(n, fibonacci);
         }
-        DebugTrace.leave(); // TODO: Remove after debugging
+        DebugTrace.leave(); // TODO: Debug
         return fibonacci;
     }
 }

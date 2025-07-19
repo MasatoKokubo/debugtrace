@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'DebugTrace'
+rootProject.name = 'debugtrace'
