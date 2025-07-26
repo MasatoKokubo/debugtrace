@@ -158,7 +158,7 @@
 <dd>
 <div class="block">A logger that outputs directly to a file.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/debugtrace/logger/File.html#File-java.io.File-boolean-">File(File, boolean)</a></span> - Constructor for class org.debugtrace.logger.<a href="org/debugtrace/logger/File.html" title="class in org.debugtrace.logger">File</a></dt>
+<dt><span class="memberNameLink"><a href="org/debugtrace/logger/File.html#File-java.io.File-java.nio.charset.Charset-org.debugtrace.LineSeparator-boolean-">File(File, Charset, LineSeparator, boolean)</a></span> - Constructor for class org.debugtrace.logger.<a href="org/debugtrace/logger/File.html" title="class in org.debugtrace.logger">File</a></dt>
 <dd>
 <div class="block">Constructs a org.debugtrace.logger.File.</div>
 </dd>
@@ -311,6 +311,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#limitString">limitString</a></span> - Static variable in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace"><span class="typeNameLink">LineSeparator</span></a> - Enum in <a href="org/debugtrace/package-summary.html">org.debugtrace</a></dt>
+<dd>
+<div class="block">Line Separator</div>
+</dd>
 <dt><a href="org/debugtrace/helper/ListUtils.html" title="interface in org.debugtrace.helper"><span class="typeNameLink">ListUtils</span></a> - Interface in <a href="org/debugtrace/helper/package-summary.html">org.debugtrace.helper</a></dt>
 <dd>
 <div class="block">Has utility methods for List.</div>
@@ -487,6 +491,8 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="org/debugtrace/LineSeparator.html#parse-java.lang.String-">parse(String)</a></span> - Static method in enum org.debugtrace.<a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#print-java.lang.String-">print(String)</a></span> - Static method in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
 <dd>
 <div class="block">Outputs the message to the log.</div>
@@ -693,6 +699,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#timestampFormat">timestampFormat</a></span> - Static variable in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#timeZone">timeZone</a></span> - Static variable in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/debugtrace/LineSeparator.html#toString--">toString()</a></span> - Method in enum org.debugtrace.<a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/logger/File.html#toString--">toString()</a></span> - Method in class org.debugtrace.logger.<a href="org/debugtrace/logger/File.html" title="class in org.debugtrace.logger">File</a></dt>
 <dt><span class="memberNameLink"><a href="org/debugtrace/logger/Jdk.html#toString--">toString()</a></span> - Method in class org.debugtrace.logger.<a href="org/debugtrace/logger/Jdk.html" title="class in org.debugtrace.logger">Jdk</a></dt>
 <dt><span class="memberNameLink"><a href="org/debugtrace/logger/Log4j.html#toString--">toString()</a></span> - Method in class org.debugtrace.logger.<a href="org/debugtrace/logger/Log4j.html" title="class in org.debugtrace.logger">Log4j</a></dt>
@@ -753,12 +763,23 @@
 <dd>
 <div class="block">Returns the 4th value.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/debugtrace/LineSeparator.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum org.debugtrace.<a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this type with the specified name.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/debugtrace/LineSeparator.html#values--">values()</a></span> - Static method in enum org.debugtrace.<a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum type, in
+the order they are declared.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#varNameValueSeparator">varNameValueSeparator</a></span> - Static variable in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/debugtrace/DebugTrace.html#VERSION">VERSION</a></span> - Static variable in class org.debugtrace.<a href="org/debugtrace/DebugTrace.html" title="class in org.debugtrace">DebugTrace</a></dt>
 <dd>
 <div class="block">DebugTrace version string</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/debugtrace/LineSeparator.html#visible--">visible()</a></span> - Method in enum org.debugtrace.<a href="org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:Z">
 <!--   -->

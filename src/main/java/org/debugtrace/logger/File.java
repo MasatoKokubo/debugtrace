@@ -3,10 +3,14 @@
 
 package org.debugtrace.logger;
 
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import org.debugtrace.DebugTrace;
+import org.debugtrace.LineSeparator;
 
 /**
  * A logger that outputs directly to a file.
@@ -17,16 +21,21 @@ import org.debugtrace.DebugTrace;
 public class File implements Logger {
     private static final Object lock = new Object();
     private java.io.File file;
+    private Charset charset;
     private boolean writeErrorReported;
-    private String lineSeparator = System.getProperty("line.separator");
+    private LineSeparator lineSeparator;
 
     /**
      * Constructs a org.debugtrace.logger.File.
      * @param file the output destination java.io.File
+     * @param charset the charset
+     * @param lineSeparator the line separator
      * @param append Append output to the existing log file if true, initialize and output otherwise
      */
-    public File(java.io.File file, boolean append) {
+    public File(java.io.File file, Charset charset, LineSeparator lineSeparator, boolean append) {
         this.file = file;
+        this.charset = charset;
+        this.lineSeparator = lineSeparator;
         try {
             new FileWriter(file, append).close();
         } catch (IOException e) {
@@ -40,7 +49,7 @@ public class File implements Logger {
     @Override
     public void log(String message) {
         synchronized (lock) {
-            try (FileWriter writer = new FileWriter(file, true)) {
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file, true), charset)) {
                 writer.write(DebugTrace.appendTimestamp(message) + lineSeparator);
             } catch (IOException e) {
                 if (!writeErrorReported) {
@@ -56,6 +65,9 @@ public class File implements Logger {
      */
     @Override
     public String toString() {
-        return getClass().getName() + " (file: " + file.getPath() + ")";
+        return getClass().getName() +
+            " (character set: " + charset +
+            ", line separator: " + lineSeparator.visible() +
+            ", file: " + file.getPath() + ")";
     }
 }

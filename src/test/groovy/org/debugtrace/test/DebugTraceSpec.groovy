@@ -827,19 +827,21 @@ class DebugTraceSpec extends Specification {
         DebugTrace.printStack(10)
     }
 
+    private class ThrowExceptiuon {
+        @Override
+        public String toString() {
+            throw new RuntimeException('Point');
+        }
+    }
+
     // 3.5.2
     def "toString method throws Exception"() {
         setup:
         DebugTrace.enter()
  
         when:
-        def point = new Point(1, 2) {
-            @Override
-            public String toString() {
-                throw new RuntimeException('Point');
-            }
-        }
-        DebugTrace.print('point', point)
+        def foo = new ThrowExceptiuon()
+        DebugTrace.print('foo', foo)
 
         then:
         DebugTrace.lastLog.contains('java.lang.RuntimeException: Point')

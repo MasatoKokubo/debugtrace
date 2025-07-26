@@ -140,7 +140,9 @@ implements <a href="../../../org/debugtrace/logger/Logger.html" title="interface
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../org/debugtrace/logger/File.html#File-java.io.File-boolean-">File</a></span>(java.io.File&nbsp;file,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../org/debugtrace/logger/File.html#File-java.io.File-java.nio.charset.Charset-org.debugtrace.LineSeparator-boolean-">File</a></span>(java.io.File&nbsp;file,
+    java.nio.charset.Charset&nbsp;charset,
+    <a href="../../../org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a>&nbsp;lineSeparator,
     boolean&nbsp;append)</code>
 <div class="block">Constructs a org.debugtrace.logger.File.</div>
 </td>
@@ -199,18 +201,22 @@ implements <a href="../../../org/debugtrace/logger/Logger.html" title="interface
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="File-java.io.File-boolean-">
+<a name="File-java.io.File-java.nio.charset.Charset-org.debugtrace.LineSeparator-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>File</h4>
 <pre>public&nbsp;File(java.io.File&nbsp;file,
+            java.nio.charset.Charset&nbsp;charset,
+            <a href="../../../org/debugtrace/LineSeparator.html" title="enum in org.debugtrace">LineSeparator</a>&nbsp;lineSeparator,
             boolean&nbsp;append)</pre>
 <div class="block">Constructs a org.debugtrace.logger.File.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - the output destination java.io.File</dd>
+<dd><code>charset</code> - the charset</dd>
+<dd><code>lineSeparator</code> - the line separator</dd>
 <dd><code>append</code> - Append output to the existing log file if true, initialize and output otherwise</dd>
 </dl>
 </li>

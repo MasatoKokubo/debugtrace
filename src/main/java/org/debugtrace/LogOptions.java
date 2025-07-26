@@ -3,7 +3,6 @@
 
 package org.debugtrace;
 
-
 /**
  * Holds options to pass to print methods.
  *
